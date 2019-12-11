@@ -37,6 +37,9 @@ class FlutterGtpushPlugin(private var activity: Activity) : MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
+            "init"->{
+                init()
+            }
             "getClientId" -> result.success("clientId=454564564564564556165")
             "showToast" -> {
                 Toast.makeText(getCurrentActivity(), "ToastAndroid", Toast.LENGTH_SHORT).show()
