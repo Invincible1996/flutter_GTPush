@@ -3,6 +3,7 @@ package com.bigshot.flutter_gtpush.service
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import com.bigshot.flutter_gtpush.NotificationUtil
 import com.igexin.sdk.GTIntentService
 import com.igexin.sdk.message.GTCmdMessage
@@ -23,7 +24,8 @@ class MyIntentService : GTIntentService() {
         val pkg: String = message!!.pkgName
         val cid: String = message!!.clientId
 
-        NotificationUtil.showNotification(context!!, "测试推送", "这是一条测试消息。。。$messageId")
+//        NotificationUtil.showNotification(context!!, "测试推送", "这是一条测试消息。。。$messageId")
+        Toast.makeText(context, "fffff$messageId", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNotificationMessageArrived(context: Context?, p1: GTNotificationMessage?) {
