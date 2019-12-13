@@ -1,12 +1,14 @@
 package com.bigshot.flutter_gtpush.service
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import com.bigshot.flutter_gtpush.NotificationUtil
 import com.igexin.sdk.GTIntentService
 import com.igexin.sdk.message.GTCmdMessage
 import com.igexin.sdk.message.GTNotificationMessage
 import com.igexin.sdk.message.GTTransmitMessage
+
 
 class MyIntentService : GTIntentService() {
 
@@ -41,6 +43,9 @@ class MyIntentService : GTIntentService() {
      */
     override fun onReceiveClientId(context: Context?, clientId: String?) {
         Log.d(TAG, "onReceiveClientId$clientId")
+        val intent = Intent("com.example.communication.RECEIVER")
+        intent.putExtra("clientId", clientId)
+        sendBroadcast(intent)
     }
 
     override fun onReceiveOnlineState(context: Context?, p1: Boolean) {

@@ -7,7 +7,18 @@ class FlutterGTPush {
   static const MethodChannel _channel = const MethodChannel('flutter_gtpush');
 
   static void init() async {
+    _channel.setMethodCallHandler(_handler);
     await _channel.invokeMethod('init');
+  }
+
+  static Future<dynamic> _handler(MethodCall call) {
+    String method = call.method;
+    switch (method) {
+      case 'receiveClientId':
+        print('flutter收到了clientId============>>>>>>>${call.arguments}');
+        break;
+    }
+    return new Future.value(null);
   }
 
   static Future<String> get platformVersion async {
