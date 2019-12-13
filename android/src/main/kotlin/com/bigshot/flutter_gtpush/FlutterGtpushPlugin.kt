@@ -9,7 +9,6 @@ import android.util.Log
 import android.widget.Toast
 import com.bigshot.flutter_gtpush.service.MyIntentService
 import com.bigshot.flutter_gtpush.service.MyPushService
-import com.bigshot.flutter_gtpush.service.MyReceiver
 import com.igexin.sdk.PushManager
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -38,7 +37,7 @@ class FlutterGtpushPlugin(private var activity: Activity) : MethodCallHandler {
         PushManager.getInstance().registerPushIntentService(activity.applicationContext, MyIntentService::class.java)
 
         //注册广播
-        val myReceiver = MyReceiver(activity)
+        val myReceiver = MyReceiver()
         val intentFilter = IntentFilter()
         intentFilter.addAction("com.example.communication.RECEIVER")
         activity.registerReceiver(myReceiver, intentFilter)
@@ -62,7 +61,7 @@ class FlutterGtpushPlugin(private var activity: Activity) : MethodCallHandler {
         }
     }
 
-    class MyReceiver(activity: Activity) : BroadcastReceiver() {
+    class MyReceiver() : BroadcastReceiver() {
 
         override fun onReceive(context: Context?, intent: Intent?) {
             val tag = "MyReceiver"
