@@ -1,6 +1,7 @@
 package com.bigshot.flutter_gtpush.service
 
 import android.content.Context
+import android.util.Log
 import com.bigshot.flutter_gtpush.NotificationUtil
 import com.igexin.sdk.GTIntentService
 import com.igexin.sdk.message.GTCmdMessage
@@ -39,7 +40,7 @@ class MyIntentService : GTIntentService() {
      * 收到clientId
      */
     override fun onReceiveClientId(context: Context?, clientId: String?) {
-
+        Log.d(TAG, "onReceiveClientId$clientId")
     }
 
     override fun onReceiveOnlineState(context: Context?, p1: Boolean) {
